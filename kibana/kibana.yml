@@ -1,7 +1,25 @@
 server.name: kibana
 server.host: "0"
-elasticsearch.url: http://elasticsearch:9200
-xpack.monitoring.ui.container.elasticsearch.enabled: true
+
+
+elasticsearch.url: https://elasticsearch:9200
+
+elasticsearch.ssl.key: /usr/share/kibana/config/certs/kibana.key
+elasticsearch.ssl.verificationMode: certificate
+elasticsearch.ssl.certificate: /usr/share/kibana/config/certs/kibana.crt
+elasticsearch.ssl.certificateAuthorities: /usr/share/kibana/config/certs/ca/ca.crt
 
 elasticsearch.username: "kibana"
 elasticsearch.password: "changeme"
+
+xpack.monitoring.ui.container.elasticsearch.enabled: true
+
+
+
+server.ssl.enabled: true
+server.ssl.key: /usr/share/kibana/config/certs/kibana.key
+server.ssl.certificate: /usr/share/kibana/config/certs/kibana.crt
+server.ssl.certificateAuthorities: /usr/share/kibana/config/certs/ca/ca.crt
+
+xpack.security.encryptionKey: fewfnewfnew8gw49gh9w84gh9w8hfgehf
+xpack.security.sessionTimeout: 600000

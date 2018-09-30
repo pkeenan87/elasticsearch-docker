@@ -17,11 +17,26 @@ services:
       - 9200:9200
     networks:
       - esnet
+  elasticsearch02:
+    build: elasticsearch_two/.
+    container_name: elasticsearch02
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata2:/usr/share/elasticsearch/data
+    networks:
+      - esnet
   kibana:
     build: kibana/.
     container_name: kibana
     environment:
-      - ELASTICSEARCH_URL=http://elasticsearch:9200
+      - ELASTICSEARCH_URL=https://elasticsearch:9200
     ports:
       - 5601:5601
     networks:
